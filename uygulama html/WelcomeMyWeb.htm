@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            border: solid 1px;
+            border-color: slategray;
+            padding: 4px;
+            color: white;
+            background-color: slategray;
+            font-size: 25px;
+        }
+        header>ol{
+            display: inline-block;
+            margin-right: 10px;
+        }
+        main img{
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            border-radius: 50%;
+        }
+        main>section.head{
+            display: block;
+            text-align: center;
+            padding: 5px;
+            background-color: gainsboro ;
+        }
+        main>section.s2>ol{
+            padding: 10px 20px;
+            column-count: 2;
+            list-style: none;
+        }
+        main>section>h1{
+            padding: 10px;
+        }
+        main>section.s1{
+            padding: 18px;
+            
+            
+        }
+
+        main>section.s2{
+            background-color:gainsboro;
+            
+            
+        }
+        main>section.s3{
+            background-color:gainsboro;
+            padding: 18px;
+        }
+        main>section.s3 input{
+               width: 100%;
+               margin-bottom: 10px;
+        }
+        main>section.s3 label{
+            
+            
+        }
+        main>section.s3 textarea{    
+           width: 100%;
+           
+        }
+        main>section.s3>input.btn1{
+              
+           width: 100%;
+           background-color: slategray;
+           color: white;
+           font-size: 25px;
+           
+        }
+        footer>section>p{
+            background-color:slategray;
+            color: aliceblue;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <ol>Home</ol>
+        <ol>About</ol>
+        <ol>Skills</ol>
+        <ol>Projects</ol>
+        <ol>Contact</ol>
+    </header>
+    <main>
+        <section class="head">
+            <h1>Welcome to My Website</h1>
+            <p>Hello, I'm Yasin Bağçuvan, a web developer. Passionate about creating awesome websites.</p>
+            <img src="../img/1708460942233.jpg" alt="">
+        </section>
+
+        <section class="s1">
+            <h1>About Me</h1>
+            <ol>
+                <ol>
+                    <h3>Background</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi aliquid provident ullam dicta delectus temporibus eaque, animi</p>
+                </ol>
+                <ol>
+                    <h3>Education</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi aliquid provident ullam dicta delectus temporibus eaque, animi</p>
+                </ol>
+            </ol>
+        </section>
+
+        <section class="s2">
+            <h1>Skills</h1>
+            <ol>
+                <li>
+                    <h3>HTML</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum cupiditate animi magni corporis? Quos, sequi!</p>
+                </li>
+                <li>
+                    <h3>CSS</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum cupiditate animi magni corporis? Quos, sequi!</p>
+                </li>
+                <li>
+                    <h3>JavaScript</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum cupiditate animi magni corporis? Quos, sequi!</p>
+                </li>
+                <li>
+                    <h3>REACT</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum cupiditate animi magni corporis? Quos, sequi!</p>
+                </li>
+            </ol>
+            
+        </section>
+        <section class="s1">
+            <h1>Projects</h1>
+            <ol>
+                <ol>
+                    <h3>Project1</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi aliquid provident ullam dicta delectus temporibus eaque, animi</p>
+                </ol>
+                <ol>
+                    <h3>Project2</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi aliquid provident ullam dicta delectus temporibus eaque, animi</p>
+                </ol>
+            </ol>
+        </section>
+
+        <section class="s3">
+            <h1>Contact Me</h1>
+            <label for="Name">Name</label>
+            <input type="text" id="Name">
+            <label for="email">Email</label>
+            <input type="email" id="email">
+            <label for="mesaj">Message</label>
+            <textarea rows="5" maxlength="200" type="text" id="mesaj"></textarea>
+            <input class="btn1" type="button" value="Send">
+        </section>
+    </main>
+    <footer>
+        <section>
+            <p>2023 Yasin Bağçuvan. All rights reserved.</p>
+        </section>
+    </footer>
+</body>
+</html>
