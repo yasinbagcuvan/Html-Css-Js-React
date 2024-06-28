@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moda Günlüğü</title>
+    <style>
+        html,body{
+            margin: 0;
+            box-sizing: border-box;
+            height: 1920px;
+            
+        }
+        .wrapper{
+            position: static;
+        }
+        .nav{
+            position: fixed;
+            display: block;
+            width: 100%;
+            top: 0;
+            background-color: darkgrey;
+            z-index: 2;
+        }
+        .nav>h1{
+            text-align: center;
+        }
+        .menu{
+            border-top: solid 1px aquamarine;
+        }
+        .menu>h3{
+            /* margin-right: 35px; */
+            padding-left: 25px;
+            display: inline-block;
+        }
+        .menu>h3:hover{
+            color: aquamarine;
+        }
+        div.card{
+            position: relative;
+            display: inline-block;
+            width: 50%;
+            text-align: left;
+            border: 1px solid black;
+            top: 200px; 
+            
+            padding:20px ;
+            left: 50px;
+            margin-bottom: 20px;
+            
+
+        }
+        .card>button{
+            background-color: white;
+            border: 0;
+            font-size: 20px;
+            position: absolute;
+            right: 10px;
+        }
+        .card>button:hover{
+            background-color: rgba(255, 0, 0, 0.5);
+            border: 0;
+            position: absolute;
+            right: 10px;
+        }
+        .card:hover 
+        {
+            box-shadow: 5px 5px 15px rgba(127, 255, 212, 0.8);
+        }
+        
+        .ads{
+            text-align: center;
+            width: 30%;
+            height: 500px;
+            border: 1px solid aquamarine;
+            background-color: darkgray;
+            position: fixed;
+            right: 10px;
+            top: 200px;
+        }
+        .footer{
+            position: fixed;
+            bottom: 0;
+            text-align: center;
+            width: 100%;
+            background-color: grey;
+            font-size: 20px;
+        }
+        
+        
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="nav">
+            <h1>Moda Günlüğü</h1>
+            <div class="menu">
+                <h3 class="menu-item">Anasayfa</h3>
+                <h3 class="menu-item">Kategoriler</h3>
+                <h3 class="menu-item">Hakkımızda</h3>
+                <h3 class="menu-item">İletişim</h3>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card">
+                <button>X</button>
+                <h2>Yazın Trend Parçaları</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque iusto laudantium consectetur eius molestiae?</p>
+            </div>
+            <div class="card">
+                <button>X</button>
+                <h2>Yazın Trend Parçaları</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque iusto laudantium consectetur eius molestiae?</p>
+            </div>
+            <div class="card">
+                <button>X</button>
+                <h2>Yazın Trend Parçaları</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque iusto laudantium consectetur eius molestiae?</p>
+            </div>
+            <div class="card">
+                <button>X</button>
+                <h2>Yazın Trend Parçaları</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque iusto laudantium consectetur eius molestiae?</p>
+            </div>
+            <div class="ads">
+                <h3>Sponsorlu Reklam </h3>
+                <p>Bu bölümde sponsorlu reklam alınacak</p>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Yasin Bağçuvan All copyrights.</p>
+        </div>
+    </div>
+    
+</body>
+</html>
