@@ -1,0 +1,85 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    
+    font-family: monospace;
+}
+::placeholder{
+    font-family: monospace;
+    font-size: 14px;
+}
+header{
+    border: solid 1px;
+    border-color: slategray;
+    padding: 4px;
+    color: white;
+    background-color: slategray;
+    font-size: 25px;
+}
+header>ol{
+    display: inline-block;
+    margin-right: 10px;
+}
+main img{
+    display: block;
+    width: 200px;
+    margin: 10px auto;
+    border-radius: 50%;
+}
+main>section.head{
+    display: block;
+    text-align: center;
+    padding: 5px;
+    background-color: gainsboro ;
+}
+main>section.s2>ol{
+    padding: 10px 20px;
+    column-count: 2;
+    list-style: none;
+}
+main>section>h1{
+    padding: 10px;
+}
+main>section.s1{
+    padding: 18px;
+    
+    
+}
+
+main>section.s2{
+    background-color:gainsboro;
+    
+    
+}
+main>section.s3{
+    background-color:gainsboro;
+    padding: 18px;
+}
+main>section.s3 input{
+       width: 100%;
+       margin-bottom: 10px;
+}
+main>section.s3 label{
+    
+    
+}
+main>section.s3 textarea{    
+   width: 100%;
+   
+}
+main>section.s3>input.btn1{
+      
+   width: 100%;
+   background-color: slategray;
+   color: white;
+   font-size: 25px;
+   
+}
+footer>section>p{
+    background-color:slategray;
+    color: aliceblue;
+    text-align: center;
+}
