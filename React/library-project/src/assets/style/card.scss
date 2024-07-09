@@ -1,0 +1,65 @@
+.card{
+    width: 420px;
+    height: 240px;
+    background-color: #F4A261;
+    color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+    img{
+        height: 240px;
+        width: 40%;
+        object-fit: cover;
+        border-radius: 10px 0 0 10px;        
+    }
+    &-body{
+        padding: 10px;
+        h4{
+            text-align: center;
+            font-size: 15px;
+        }
+    }
+    .delete,.edit{
+        position: absolute;
+        height: 240px; 
+        width: 20px;   
+        top: 0;
+        border: none;
+        cursor: pointer;
+        transition: 0.5s;
+        opacity: 0;
+        
+    }
+    .delete{
+        left: 0;
+        border-radius: 10px 0 0 10px;
+        background-color:  #e76f51cc;
+        &:hover{
+            width: 40%;
+            opacity: 1;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    }
+    .edit{
+        right: 0;
+        border-radius: 0 10px 10px 0;
+        background-color: #e9c56ada;
+        &:hover{
+            width: 60%;
+            opacity: 1;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    }
+}
+
+.card-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
