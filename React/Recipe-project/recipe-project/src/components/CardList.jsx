@@ -1,11 +1,11 @@
 import React from 'react'
 import Card from './Card'
 
-const CardList = ({data}) => {
+const CardList = ({fakeRecipes, recipeDelete}) => {
   return (
     <div className="card-list">{
-        data.map(recipe =>
-          <Card recipe ={recipe} key={recipe.id}/>
+      fakeRecipes.map(recipe =>
+          <Card recipe ={recipe} recipeDelete={recipeDelete} key={recipe.id}/>
         )
       }
   

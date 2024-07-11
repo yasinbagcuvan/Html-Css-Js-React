@@ -1,9 +1,11 @@
 import React from 'react'
 import '../assets/style/card.scss'
 import Food from '../assets/img/favIcon.png'
-const Card = ({recipe}) => {
+const Card = ({recipe,recipeDelete}) => {
   return (
     <div className="card">
+      <button onClick={()=>recipeDelete(recipe.id)} className='delete'>SİL</button>
+      <button className='edit'>DÜZENLE</button>
       <img src={recipe.image?recipe.image:Food} alt={recipe.title+"_kapak"} />
       <div className="card-body">
         <h4>{recipe.title}</h4>
