@@ -1,7 +1,8 @@
 import React from 'react'
 import Brand from '../assets/img/brand.png'
 import '../assets/style/navi.scss'  
-const Navi = ({navHead}) => {
+import CardList from './CardList'
+const Navi = ({navHead, kategoriler,setSecilenKategori}) => {
   return (
     <nav>
         <div className="brand">
@@ -9,11 +10,11 @@ const Navi = ({navHead}) => {
             <h3>{navHead}</h3>
         </div>
         <ul className="liste">
-            <li>Yazılım</li>
-            <li>Tarih</li>
-            <li>Roman</li>
-            <li>Finans</li>
-            <li>Diğer</li>
+            {
+              kategoriler.map(kategori =>
+                <li onClick={(e) =>setSecilenKategori(e.target.innerText)} key={kategori.id}>{kategori.kategoriAdı}</li>
+              )
+            }
         </ul>
     </nav>
   )

@@ -1,16 +1,19 @@
 import React from 'react'
 import Card from './Card'
 
-const CardList = ({data,kitapSil}) => {
+const CardList = ({data,kitapSil,secilenKategori}) => {
   
   return (
-    <div className="card-list">{
-      data.map(kitap =>
-        <Card kitap ={kitap} kitapSil={kitapSil} key={kitap.id}/>
-      )
-    }
+    <>
+    <h3 style={{marginLeft:"25px"}}>{secilenKategori} </h3>
+      <div className="card-list">{
+        data.map(kitap =>
+          <Card kitap ={kitap} kitapSil={kitapSil} key={kitap.id}/>
+        )
+      }
 
-    </div>
+      </div>
+    </>
   )
 }
 
