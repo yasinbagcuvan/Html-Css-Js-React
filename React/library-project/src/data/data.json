@@ -44,6 +44,25 @@
       "kitapSayfaSayisi": 468,
       "kitapResmi": "https://img.kitapyurdu.com/v1/getImage/fn:20333/wh:true/wi:220",
       "kitapAciklamasi": "1854 yılı, soğuk bir Ekim gecesi. Karanlık bir geçitte masum bir adam bıçaklanarak öldürülür. Edward Glyver'ın olağanüstü öyküsü işte böyle başlıyor. Victoria dönemi Londrası'nın puslu sokaklarında, umumhanelerinde ve afyon batakhanelerinde geçen ihanet, vefasızlık, ölüm, vehim, saplantı ve hırs öyküsü…"
+    },
+    {
+      "id": "6",
+      "kitapAdi": "asd",
+      "kitapYazari": "asd",
+      "kitapKategorisi": "Diğer",
+      "kitapSayfaSayisi": "321",
+      "kitapResmi": "",
+      "kitapAciklamasi": "asdasd",
+      "isDeleted": true
+    },
+    {
+      "id": "7",
+      "kitapAdi": "asd1233",
+      "kitapYazari": "asd3",
+      "kitapKategorisi": "Tarih",
+      "kitapSayfaSayisi": "321",
+      "kitapResmi": "",
+      "kitapAciklamasi": "asdasdasd"
     }
   ],
   "kategoriler": [

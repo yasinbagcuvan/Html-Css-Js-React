@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../assets/style/forms.scss'
 
-const Forms = ({kitapEkle,kitaplar}) => {
+const Forms = ({kitapEkle,kitaplar,secilenKitap}) => {
   const[kitapAdi,setKitapAdi]=useState("");
   const[kitapYazari,setKitapYazari]=useState("");
   const[kitapKategorisi,setKitapKategorisi]=useState("Kategori Seçiniz");
@@ -28,9 +28,20 @@ const Forms = ({kitapEkle,kitaplar}) => {
     setKitapAciklamasi("");
   }
 
+  useEffect(()=>{
+    if (secilenKitap) {
+      setKitapAdi(secilenKitap.kitapAdi);
+      setKitapYazari(secilenKitap.kitapYazari);
+      setKitapKategorisi(secilenKitap.kitapKategorisi);
+      setSayfaSayisi(secilenKitap.kitapSayfaSayisi);
+      setKitapResmi(secilenKitap.kitapResmi);
+      setKitapAciklamasi(secilenKitap.kitapAciklamasi);
+    }
+  },[secilenKitap])
+
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Kitap Ekle</h3>
+      <h3>{secilenKitap?"Kitap Düzenle":"Kitap Ekle"}</h3>
       <input value={kitapAdi} onChange={e=>setKitapAdi(e.target.value)} type='text' placeholder='Kitap Adı'/>
       <input value={kitapYazari} onChange={e=>setKitapYazari(e.target.value)} type='text' placeholder='Kitap Yazarı'/>
       <select value={kitapKategorisi} onChange={e=>setKitapKategorisi(e.target.value)}>
@@ -44,7 +55,7 @@ const Forms = ({kitapEkle,kitaplar}) => {
       <input value={kitapSayfaSayisi} onChange={e=>setSayfaSayisi(e.target.value)} type="number" placeholder='Sayfa Sayısı' />
       <input value={kitapResmi} onChange={e=>setKitapResmi(e.target.value)} type="url" placeholder='Kitap Resmi(url)' />
       <textarea value={kitapAciklamasi} onChange={e=>setKitapAciklamasi(e.target.value)} placeholder='Kitap Açıklaması'></textarea>
-      <input disabled={kitapAdi ==="" || kitapYazari==="" || kitapAciklamasi==="" || kitapSayfaSayisi==="" || kitapKategorisi==="Kategori Seçiniz"} type="submit" value="Ekle" />
+      <input disabled={kitapAdi ==="" || kitapYazari==="" || kitapAciklamasi==="" || kitapSayfaSayisi==="" || kitapKategorisi==="Kategori Seçiniz"} type="submit" value={secilenKitap?"Duzenle":"Ekle"} />
     </form>
   )
 }
