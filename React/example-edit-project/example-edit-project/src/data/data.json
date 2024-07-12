@@ -1,0 +1,27 @@
+{
+  "notlar": [
+    {
+      "id": "1",
+      "notAdi": "test",
+      "isDeleted": true
+    },
+    {
+      "id": "2",
+      "notAdi": "asd",
+      "isDeleted": true
+    },
+    {
+      "id": "3",
+      "notAdi": "asd1",
+      "isDeleted": true
+    },
+    {
+      "id": "4",
+      "notAdi": "test2"
+    },
+    {
+      "id": "4",
+      "notAdi": "test"
+    }
+  ]
+}
