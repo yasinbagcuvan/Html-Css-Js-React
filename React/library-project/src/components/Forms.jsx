@@ -1,43 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import { useContext } from 'react'
 import '../assets/style/forms.scss'
+import DataContext from '../context/DataContext'
 
-const Forms = ({kitapEkle,kitaplar,secilenKitap}) => {
-  const[kitapAdi,setKitapAdi]=useState("");
-  const[kitapYazari,setKitapYazari]=useState("");
-  const[kitapKategorisi,setKitapKategorisi]=useState("Kategori Seçiniz");
-  const[kitapSayfaSayisi,setSayfaSayisi]=useState("");
-  const[kitapResmi,setKitapResmi]=useState("");
-  const[kitapAciklamasi,setKitapAciklamasi]=useState("");
+const Forms = () => {
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    kitapEkle({
-      id: (Number(kitaplar[kitaplar.length-1].id)+1).toString(),
-      kitapAdi: kitapAdi,
-      kitapYazari: kitapYazari,
-      kitapKategorisi: kitapKategorisi,
-      kitapSayfaSayisi: kitapSayfaSayisi,
-      kitapResmi: kitapResmi,
-      kitapAciklamasi: kitapAciklamasi
-    });
-    setKitapAdi("");
-    setKitapYazari("");
-    setKitapKategorisi("Kategori Seçiniz");
-    setSayfaSayisi("");
-    setKitapResmi("");
-    setKitapAciklamasi("");
-  }
-
-  useEffect(()=>{
-    if (secilenKitap) {
-      setKitapAdi(secilenKitap.kitapAdi);
-      setKitapYazari(secilenKitap.kitapYazari);
-      setKitapKategorisi(secilenKitap.kitapKategorisi);
-      setSayfaSayisi(secilenKitap.kitapSayfaSayisi);
-      setKitapResmi(secilenKitap.kitapResmi);
-      setKitapAciklamasi(secilenKitap.kitapAciklamasi);
-    }
-  },[secilenKitap])
+  const {secilenKitap,
+        kitapAdi,
+        kitapYazari,
+        kitapKategorisi,
+        kitapResmi,
+        kitapSayfaSayisi,
+        kitapAciklamasi,
+        setKitapAdi,
+        setKitapYazari,
+        setKitapKategorisi,
+        setKitapResmi,
+        setKitapSayfaSayisi,
+        setKitapAciklamasi,
+        handleSubmit
+      } = useContext(DataContext);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -52,7 +33,7 @@ const Forms = ({kitapEkle,kitaplar,secilenKitap}) => {
         <option>Finans</option>
         <option>Diğer</option>
       </select>
-      <input value={kitapSayfaSayisi} onChange={e=>setSayfaSayisi(e.target.value)} type="number" placeholder='Sayfa Sayısı' />
+      <input value={kitapSayfaSayisi} onChange={e=>setKitapSayfaSayisi(e.target.value)} type="number" placeholder='Sayfa Sayısı' />
       <input value={kitapResmi} onChange={e=>setKitapResmi(e.target.value)} type="url" placeholder='Kitap Resmi(url)' />
       <textarea value={kitapAciklamasi} onChange={e=>setKitapAciklamasi(e.target.value)} placeholder='Kitap Açıklaması'></textarea>
       <input disabled={kitapAdi ==="" || kitapYazari==="" || kitapAciklamasi==="" || kitapSayfaSayisi==="" || kitapKategorisi==="Kategori Seçiniz"} type="submit" value={secilenKitap?"Duzenle":"Ekle"} />

@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Card from './Card'
+import DataContext from '../context/DataContext'
+import SearchBar from './SearchBar';
 
-const CardList = ({data,kitapSil,secilenKategori,cardDuzenle}) => {
-  
+const CardList = () => {
+  const {kitaplar,secilenKategori} = useContext(DataContext);
   return (
     <>
-    <h3 style={{marginLeft:"25px"}}>{secilenKategori} </h3>
+    <SearchBar/>
+    
       <div className="card-list">{
-        data.map(kitap =>
-          !kitap.isDeleted &&
-          <Card kitap ={kitap} kitapSil={kitapSil} key={kitap.id} cardDuzenle={cardDuzenle}/>
+        kitaplar.map(kitap =>
+          (kitap.kitapKategorisi === secilenKategori || secilenKategori === "Tüm Kitaplar") &&
+          (!kitap.isDeleted &&
+          <Card kitap ={kitap} key={kitap.id} />)
         )
       }
-
       </div>
     </>
   )

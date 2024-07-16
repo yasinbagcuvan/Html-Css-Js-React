@@ -11,7 +11,7 @@ const[selectedRecipe,setSelectedRecipe] = useState("")
 
 
 const recipeAdd =  async (yeni) =>{
-    let url = "http://localhost:3000/recipes";
+    let url = "http://localhost:3005/recipes";
     if(!selectedRecipe){
       setFakeRecipes(prev =>[...prev,yeni])
       const response = await axios.post(url,yeni)
@@ -35,11 +35,11 @@ const recipeAdd =  async (yeni) =>{
 
 const recipeDelete = async(id) => {
   setFakeRecipes(prev =>prev.filter(statedenGelen => statedenGelen.id !== id))
-  const url =`http://localhost:3000/recipes/${id}`
+  const url =`http://localhost:3005/recipes/${id}`
   const response = await axios.patch(url, {isDeleted: true})
 }
 const recipesGet = async () =>{
-  const url = "http://localhost:3000/recipes"
+  const url = "http://localhost:3005/recipes"
   const response = await axios.get(url);
   const recipes = await response.data;
   setFakeRecipes(recipes);

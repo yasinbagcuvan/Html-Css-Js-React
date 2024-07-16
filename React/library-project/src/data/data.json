@@ -62,7 +62,27 @@
       "kitapKategorisi": "Tarih",
       "kitapSayfaSayisi": "321",
       "kitapResmi": "",
-      "kitapAciklamasi": "asdasdasd"
+      "kitapAciklamasi": "asdasdasd",
+      "isDeleted": true
+    },
+    {
+      "id": "8",
+      "kitapAdi": "asd3",
+      "kitapYazari": "test",
+      "kitapKategorisi": "Roman",
+      "kitapSayfaSayisi": "123",
+      "kitapResmi": "",
+      "kitapAciklamasi": "asd"
+    },
+    {
+      "id": "9",
+      "kitapAdi": "test",
+      "kitapYazari": "test",
+      "kitapKategorisi": "Diğer",
+      "kitapSayfaSayisi": "123",
+      "kitapResmi": "",
+      "kitapAciklamasi": "asda",
+      "isDeleted": true
     }
   ],
   "kategoriler": [
