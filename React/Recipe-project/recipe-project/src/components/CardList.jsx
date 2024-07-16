@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Card from './Card'
+import DataContext from '../Context/DataContext'
 
-const CardList = ({fakeRecipes, recipeDelete,cardEdit}) => {
+const CardList = () => {
+  const {fakeRecipes}=useContext(DataContext);
   return (
     <div className="card-list">{
       fakeRecipes.map(recipe =>
-          <Card recipe ={recipe} recipeDelete={recipeDelete} key={recipe.id} cardEdit={cardEdit}/>
+          <Card recipe ={recipe}  key={recipe.id}/>
         )
       }
   

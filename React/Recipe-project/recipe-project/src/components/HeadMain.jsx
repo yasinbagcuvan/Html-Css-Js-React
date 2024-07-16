@@ -1,58 +1,24 @@
-import React,{ useEffect, useState } from 'react'
+import React,{ useContext, useEffect, useState } from 'react'
 import '../assets/style/headMain.scss'
+import DataContext from '../Context/DataContext'
 
-const HeadMain = ({recipeAdd,fakeRecipes,selectedRecipe}) => {
-  const[title,setrecipeTitle]=useState("");
-  const[description,setrecipeDescription]=useState("");
-  const[image,setrecipeImage]=useState("");
-  const[titleErr,setTitleErr]=useState(false);
-  const[descriptionErr,setDescriptionErr]=useState(false);
-  const[imageErr,setImageErr]=useState(false);
-  const [loading, setLoading] = useState(false);
+const HeadMain = () => {
+
+  const{selectedRecipe,
+        title,
+        description,
+        image,
+        setrecipeTitle,
+        setrecipeDescription,
+        setrecipeImage,
+        descriptionErr,
+        titleErr,
+        handleSubmit,
 
 
+  } = useContext(DataContext);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // const title1=setrecipeTitle(e.target.value);
-    // const description1=setrecipeDescription(e.target.value);
-    // const image1=setrecipeImage(e.target.value);
-    setTitleErr(false)
-    setDescriptionErr(false)
-    // setImageErr(false)
-    if (title.trim() && description.trim()) {
-      recipeAdd({
-        id: (Number(fakeRecipes[fakeRecipes.length-1].id)+1).toString(),
-        title: title,
-        description: description,
-        image: image,
-      });
-      setrecipeTitle("");
-      setrecipeDescription("");
-      setrecipeImage("");
-    }
-    else{
-      !title.trim() && setTitleErr(true)
-      !description.trim() && setDescriptionErr(true)
-      // !image.trim() && setImageErr(true)
-    }   
-  }
 
-  const buttonOnClick = () => {
-    setLoading(true);
-    // Simülasyon amaçlı bir süre sonra spinner'ı kaldırma
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000); // 3 saniye sonra spinner'ı kaldır
-  };
-
-  useEffect(() => {
-    if(selectedRecipe){
-      setrecipeTitle(selectedRecipe.title)
-      setrecipeDescription(selectedRecipe.description)
-      setrecipeImage(selectedRecipe.image)
-    }
-  },[selectedRecipe])
   return (
     <main>
       <div>

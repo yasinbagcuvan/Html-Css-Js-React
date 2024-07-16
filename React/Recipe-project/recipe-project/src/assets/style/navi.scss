@@ -26,3 +26,27 @@ nav{
         }
     }
 }
+.search{
+    background-color: #E6B9A6;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    justify-content: end;
+    position: relative;
+    input{
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid grey;
+        
+    }
+    input:focus{
+        outline: 2px solid #2F3645;
+
+    }
+}
+.searchIcon{
+    position:absolute;
+    color: gray;
+}
