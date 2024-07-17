@@ -18,10 +18,20 @@ nav{
             font-size: 20px;
             transition: .5s;
             cursor: pointer;
+            a{
+                color: white;
+                text-decoration: none;
+                &:hover{
+                    color:#2F3645;
+                }
+            }
             &:hover{
                 color:#2F3645;
                 text-decoration: underline;
-                transform: scale(1.2);  
+                transform: scale(1.2);
+            } 
+            .active{
+                color:white
             }
         }
     }
