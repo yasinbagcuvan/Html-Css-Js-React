@@ -4,7 +4,7 @@ import DataContext from '../Context/DataContext'
 import { IoMdSearch } from "react-icons/io";
 import { NavLink, Outlet } from 'react-router-dom';
 const Navi = () => {
-  const {setSearch} = useContext(DataContext);
+  const {state,dispatch} = useContext(DataContext);
   return (
     <>
     <nav>
@@ -18,7 +18,7 @@ const Navi = () => {
             <li>About</li>
         </ul>
         <div className='search'>
-            <input onChange={(e)=>setSearch(e.target.value)} type='text' placeholder='Search..'  /> 
+            <input onChange={(e)=>dispatch({type:"search",payload:e.target.value})} type='text' placeholder='Search..'  /> 
             <div className='searchIcon'><IoMdSearch size={30} />  </div> 
     </div>
     </nav>

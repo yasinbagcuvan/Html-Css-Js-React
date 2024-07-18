@@ -4,10 +4,10 @@ import DataContext from '../Context/DataContext'
 import CardDetail from './CardDetail';
 
 const CardList = () => {
-  const {fakeRecipes}=useContext(DataContext);
+  const {state}=useContext(DataContext);
   return (
     <div className="card-list">{
-      fakeRecipes.map(recipe =>
+      state.fakeRecipes.map(recipe =>
           <Card recipe ={recipe}  key={recipe.id}/>
         )
       }

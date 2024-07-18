@@ -1,23 +1,12 @@
-import React,{ useContext, useEffect, useState } from 'react'
+import React,{ useContext} from 'react'
 import '../assets/style/headMain.scss'
 import DataContext from '../Context/DataContext'
 
 const HeadMain = () => {
 
-  const{selectedRecipe,
-        title,
-        description,
-        image,
-        setrecipeTitle,
-        setrecipeDescription,
-        setrecipeImage,
-        descriptionErr,
-        titleErr,
-        handleSubmit,
+  const{state,dispatch,handleSubmit  } = useContext(DataContext);
 
-
-  } = useContext(DataContext);
-
+  const{selectedRecipe,title,titleErr,description,descriptionErr,image} = state
 
   return (
     <main>
@@ -27,11 +16,11 @@ const HeadMain = () => {
     </div>
     <form onSubmit={handleSubmit}>
       <h3>{selectedRecipe?"Edit Recipe":"Add Recipe"}</h3>
-      <input value={title} onChange={e=>setrecipeTitle(e.target.value)} type='text' placeholder='Recipe Title'/>
+      <input value={title} onChange={e=>dispatch({type:"title",payload:e.target.value})} type='text' placeholder='Recipe Title'/>
       {titleErr && <p style={{ color: 'red' }}>Recipe Title is required!</p>} 
-      <textarea  value={description} onChange={e=>setrecipeDescription(e.target.value)} type='text' placeholder='Recipe Description'/>
+      <textarea  value={description} onChange={e=>dispatch({type:"description",payload:e.target.value})} type='text' placeholder='Recipe Description'/>
       {descriptionErr && <p style={{ color: 'red' }}>Recipe Description is required!</p>} 
-      <input value={image} onChange={e=>setrecipeImage(e.target.value)} type="url" placeholder='Image(url)' />
+      <input value={image} onChange={e=>dispatch({type:"image",payload:e.target.value})} type="url" placeholder='Image(url)' />
       {/* {imageErr && <p style={{ color: 'red' }}>Recipe Image is required!</p>}  */}
       <input type="submit"  value={selectedRecipe?"Edit":"Add"}  />
       

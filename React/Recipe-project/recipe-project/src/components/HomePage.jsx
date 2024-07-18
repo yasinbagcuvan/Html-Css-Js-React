@@ -5,7 +5,7 @@ import 'rsuite/dist/rsuite.css';
 import '../assets/style/homePage.scss'
 
 const HomePage = () => {
-    const {fakeRecipes}=useContext(DataContext);
+    const {state}=useContext(DataContext);
    
     return (
         <>
@@ -13,7 +13,7 @@ const HomePage = () => {
 
         <Carousel autoplay className='custom-slider'>
             {
-             fakeRecipes.map(recipe =>
+             state.fakeRecipes.map(recipe =>
             <img key={recipe.id} src={recipe.image} alt=""/>
             ) }
          
