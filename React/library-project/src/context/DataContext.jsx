@@ -1,30 +1,27 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useReducer } from "react";
+import { initialState, reducer } from "../reducer/reducer";
 
 
 const DataContext = createContext();
 
 export const DataProvider =({children}) => {
 
+    const [state,dispatch] = useReducer(reducer,initialState)
+
+
     const navHead = "Library"
  
-    const [kitaplar,setKitaplar] = useState([]);
-    const [kategoriler,setKategoriler] = useState([]);
-    const [secilenKategori,setSecilenKategori] = useState("Tüm Kitaplar");
-    const [secilenKitap, setSecilenKitap] = useState("");
-    const[kitapAdi,setKitapAdi]=useState("");
-    const[kitapYazari,setKitapYazari]=useState("");
-    const[kitapKategorisi,setKitapKategorisi]=useState("Kategori Seçiniz");
-    const[kitapSayfaSayisi,setKitapSayfaSayisi]=useState("");
-    const[kitapResmi,setKitapResmi]=useState("");
-    const[kitapAciklamasi,setKitapAciklamasi]=useState("");
-    const[search, setSearch] = useState("");
+    const{secilenKitap,kitaplar,kitapAdi,kitapYazari,kitapKategorisi,kitapSayfaSayisi,kitapResmi,kitapAciklamasi}=state
   
     const kitapEkle =  async (yeni) => {
       let url = "http://localhost:3005/kitaplar";
       if (!secilenKitap) {//Kitap Ekleme
         //Front-End Ekleme işlemi
-      setKitaplar(prev =>[...prev,yeni])
+      //setKitaplar(prev =>[...prev,yeni])
+      //case_12
+      yeni.id= (Number(kitaplar[kitaplar.length-1].id)+1).toString()
+      dispatch({type:"kitapEkle",yeni})
       //Backend Ekleme işlemi  
       const response = await axios.post(url,yeni)
       }
@@ -33,23 +30,27 @@ export const DataProvider =({children}) => {
         //Backend Düzenleme işlemi
         url+=`/${secilenKitap.id}`;
         const response2 = await axios.put(url,yeni)
-        setKitaplar(prev => 
-          prev.map(kitap => {
-            if (kitap.id === secilenKitap.id) {
-              return {...response2.data}
-            }
-            else{
-              return {...kitap}
-            }
-          })
-        )
-        setSecilenKitap("");
+        // setKitaplar(prev => 
+        //   prev.map(kitap => {
+        //     if (kitap.id === secilenKitap.id) {
+        //       return {...response2.data}
+        //     }
+        //     else{
+        //       return {...kitap}
+        //     }
+        //   })
+        // )
+        // setSecilenKitap("");
+        //case_15
+        yeni.id = secilenKitap.id
+        dispatch({type:"kitapDuzenle",yeni})
       }
       
     }
     const kitapSil = async (id) => {
       //Front-End Silme işlemi
-       setKitaplar(prev => prev.filter(statedenGelen => statedenGelen.id !== id))
+      //  setKitaplar(prev => prev.filter(statedenGelen => statedenGelen.id !== id))
+      dispatch({type:"kitapSil",id})
       //Backend Silme işlemi
       const url = `http://localhost:3005/kitaplar/${id}`
       // const response = await axios.delete(url) !! Tehlikeli
@@ -61,7 +62,9 @@ export const DataProvider =({children}) => {
         let url = "http://localhost:3005/kitaplar"
         const response = await axios.get(url);
         const kitaplar = await response.data;
-        setKitaplar(kitaplar); 
+        // setKitaplar(kitaplar); 
+        //case_1
+        dispatch({type:"kitaplariGetir",payload:kitaplar})
     }
     // const kitaplariGetir = async () =>{
     //   if (secilenKategori === "Tüm Kitaplar") {
@@ -91,18 +94,21 @@ export const DataProvider =({children}) => {
       const url = "http://localhost:3005/kategoriler";
       const response = await axios.get(url);
       const kategoriler = await response.data;
-      setKategoriler(kategoriler);
+      // setKategoriler(kategoriler);
+      //case_2
+      dispatch({type:"kategorileriGetir",payload:kategoriler})
     }
   
     const cardDuzenle =  (id) => {
-      setSecilenKitap(kitaplar.find(item =>item.id === id));
-      console.log(kitaplar.find(item =>item.id === id));
+      // setSecilenKitap(kitaplar.find(item =>item.id === id));
+      //case_14
+      dispatch({type:"cardDuzenle",id})
     }
 
     const handleSubmit = (e) => {
       e.preventDefault();
       kitapEkle({
-        id: (Number(kitaplar[kitaplar.length-1].id)+1).toString(),
+        
         kitapAdi: kitapAdi,
         kitapYazari: kitapYazari,
         kitapKategorisi: kitapKategorisi,
@@ -110,24 +116,27 @@ export const DataProvider =({children}) => {
         kitapResmi: kitapResmi,
         kitapAciklamasi: kitapAciklamasi
       });
-      setKitapAdi("");
-      setKitapYazari("");
-      setKitapKategorisi("Kategori Seçiniz");
-      setKitapSayfaSayisi("");
-      setKitapResmi("");
-      setKitapAciklamasi("");
+      // setKitapAdi("");
+      // setKitapYazari("");
+      // setKitapKategorisi("Kategori Seçiniz");
+      // setKitapSayfaSayisi("");
+      // setKitapResmi("");
+      // setKitapAciklamasi("");
+      //case_3
+      dispatch({type:"resetForm"})
+
     }
   
-    useEffect(()=>{
-      if (secilenKitap) {
-        setKitapAdi(secilenKitap.kitapAdi);
-        setKitapYazari(secilenKitap.kitapYazari);
-        setKitapKategorisi(secilenKitap.kitapKategorisi);
-        setKitapSayfaSayisi(secilenKitap.kitapSayfaSayisi);
-        setKitapResmi(secilenKitap.kitapResmi);
-        setKitapAciklamasi(secilenKitap.kitapAciklamasi);
-      }
-    },[secilenKitap])
+    // useEffect(()=>{
+    //   if (secilenKitap) {
+    //     setKitapAdi(secilenKitap.kitapAdi);
+    //     setKitapYazari(secilenKitap.kitapYazari);
+    //     setKitapKategorisi(secilenKitap.kitapKategorisi);
+    //     setKitapSayfaSayisi(secilenKitap.kitapSayfaSayisi);
+    //     setKitapResmi(secilenKitap.kitapResmi);
+    //     setKitapAciklamasi(secilenKitap.kitapAciklamasi);
+    //   }
+    // },[secilenKitap])
   
     
     useEffect(()=>{
@@ -138,24 +147,10 @@ export const DataProvider =({children}) => {
   
 
     return <DataContext.Provider value={{
-        navHead, kategoriler,setSecilenKategori, //Navi componentinden gelenler
-        secilenKitap, // Forms componentinden gelenler
-        kitapAdi,
-        kitapYazari,
-        kitapKategorisi,
-        kitapResmi,
-        kitapSayfaSayisi,
-        kitapAciklamasi,
-        setKitapAdi,
-        setKitapYazari,
-        setKitapKategorisi,
-        setKitapResmi,
-        setKitapSayfaSayisi,
-        setKitapAciklamasi,
+        navHead,
         handleSubmit,
-        kitaplar,secilenKategori, //CardList gelenler
-        kitapSil,cardDuzenle, //Card componentinden gelenler
-        search,setSearch
+        kitapSil,cardDuzenle,
+        state,dispatch
     }}>
                  {children}
             </DataContext.Provider>

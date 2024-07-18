@@ -4,7 +4,7 @@ import '../assets/style/navi.scss'
 import CardList from './CardList'
 import DataContext from '../context/DataContext'
 const Navi = () => {
-  const {navHead, kategoriler,setSecilenKategori} = useContext(DataContext);
+  const {navHead, state,dispatch} = useContext(DataContext);
   return (
     <nav>
         <div className="brand">
@@ -13,8 +13,9 @@ const Navi = () => {
         </div>
         <ul className="liste">
             {
-              kategoriler.map(kategori =>
-                <li onClick={(e) =>setSecilenKategori(e.target.innerText)} key={kategori.id}>{kategori.kategoriAdı}</li>
+              //case_4
+              state.kategoriler.map(kategori =>
+                <li onClick={(e) =>dispatch({type:"secilenKategori",payload:e.target.innerText})} key={kategori.id}>{kategori.kategoriAdı}</li>
               )
             }
         </ul>

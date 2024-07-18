@@ -72,7 +72,8 @@
       "kitapKategorisi": "Roman",
       "kitapSayfaSayisi": "123",
       "kitapResmi": "",
-      "kitapAciklamasi": "asd"
+      "kitapAciklamasi": "asd",
+      "isDeleted": true
     },
     {
       "id": "9",
@@ -83,6 +84,25 @@
       "kitapResmi": "",
       "kitapAciklamasi": "asda",
       "isDeleted": true
+    },
+    {
+      "id": "10",
+      "kitapAdi": "asd123",
+      "kitapYazari": "asd123",
+      "kitapKategorisi": "Yazılım",
+      "kitapSayfaSayisi": "123",
+      "kitapResmi": "",
+      "kitapAciklamasi": "asd",
+      "isDeleted": true
+    },
+    {
+      "kitapAdi": "asd123",
+      "kitapYazari": "asd1123",
+      "kitapKategorisi": "Yazılım",
+      "kitapSayfaSayisi": "123",
+      "kitapResmi": "",
+      "kitapAciklamasi": "asdas132 asd ",
+      "id": "11"
     }
   ],
   "kategoriler": [
