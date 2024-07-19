@@ -96,13 +96,23 @@
       "isDeleted": true
     },
     {
-      "kitapAdi": "asd123",
+      "kitapAdi": "asd123333",
       "kitapYazari": "asd1123",
       "kitapKategorisi": "Yazılım",
       "kitapSayfaSayisi": "123",
       "kitapResmi": "",
       "kitapAciklamasi": "asdas132 asd ",
       "id": "11"
+    },
+    {
+      "id": "12",
+      "kitapAdi": "test",
+      "kitapYazari": "test",
+      "kitapKategorisi": "Roman",
+      "kitapSayfaSayisi": "123",
+      "kitapResmi": "",
+      "kitapAciklamasi": "asd as",
+      "isDeleted": true
     }
   ],
   "kategoriler": [

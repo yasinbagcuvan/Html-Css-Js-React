@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useReducer } from "react";
 import { initialState, reducer } from "../reducer/reducer";
+import { toast, Zoom } from "react-toastify";
 
 
 const DataContext = createContext();
@@ -22,6 +23,18 @@ export const DataProvider =({children}) => {
       //case_12
       yeni.id= (Number(kitaplar[kitaplar.length-1].id)+1).toString()
       dispatch({type:"kitapEkle",yeni})
+      //toastMessage
+      toast.success('Yeni Kitap Eklendi!', {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+        });
       //Backend Ekleme işlemi  
       const response = await axios.post(url,yeni)
       }
@@ -44,6 +57,18 @@ export const DataProvider =({children}) => {
         //case_15
         yeni.id = secilenKitap.id
         dispatch({type:"kitapDuzenle",yeni})
+        //toastMessage
+      toast.info(' Kitap Düzenlendi!', {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+        });
       }
       
     }
@@ -51,6 +76,18 @@ export const DataProvider =({children}) => {
       //Front-End Silme işlemi
       //  setKitaplar(prev => prev.filter(statedenGelen => statedenGelen.id !== id))
       dispatch({type:"kitapSil",id})
+      //toastMessage
+      toast.error('Kitap Silindi!', {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+        });
       //Backend Silme işlemi
       const url = `http://localhost:3005/kitaplar/${id}`
       // const response = await axios.delete(url) !! Tehlikeli

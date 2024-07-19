@@ -5,7 +5,7 @@
     align-items: center;
     gap: 20px;
     padding: 20px;
-    justify-content: end;
+    justify-content: space-between;
     margin-bottom: 20px;
     input{
         padding: 5px 10px;
@@ -16,5 +16,27 @@
     input:focus{
         outline: 2px solid blue;
 
+    }
+    .kullanici{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap:5px;
+        .card-kullanici{
+            display: flex;
+            align-items: center;
+            img{
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+        }
+    }
+    .search-bar{
+        display: flex;
+        align-items: center;
+        gap: 20px;
     }
 }
