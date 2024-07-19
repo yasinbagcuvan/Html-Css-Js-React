@@ -2,6 +2,7 @@ import { createContext, useReducer, useState } from "react";
 import AuthService from "../services/AuthService";
 import { initialState, reducer } from "../reducer/reducer";
 import axios from "axios";
+import { toast, Zoom } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -41,27 +42,7 @@ export const AuthProvider = ({children})=>{
         AuthService.logout();
         dispatch({type:"setAuthenticated",payload:false})
     }
-
-    const handleAdd = (e) =>{
-        e.preventDefault();
-          if(!isAuthenticated){
-    
-            toast.error('UnAuthenticated!', {
-            position: "bottom-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-            transition: Zoom,
-            });
-          }
-      }
-   
-
-    return <AuthContext.Provider value={{logout,state,dispatch,getCurrentUser,login1,handleAdd}}>
+    return <AuthContext.Provider value={{logout,state,dispatch,getCurrentUser,login1}}>
         {children}
     </AuthContext.Provider>
 }

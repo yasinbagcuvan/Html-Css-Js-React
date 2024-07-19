@@ -7,7 +7,7 @@ import AuthContext from '../Context/AuthContext';
 import Brand from '../assets/img/brand.png'
 import { toast, Zoom } from 'react-toastify';
 const Navi = () => {
-  const {state,logout,getCurrentUser,handleAdd} = useContext(AuthContext);
+  const {state,logout,getCurrentUser} = useContext(AuthContext);
   const {dispatch} = useContext(DataContext);
   const navigate = useNavigate();
   const{isAuthenticated,currentUser,search} = state;
@@ -15,13 +15,28 @@ const Navi = () => {
   const handleLogin = () =>{
     navigate("/login")
   }
-
-
-  
   const handleLogout = () =>{
     {logout()}
     navigate("/login");
   }
+
+  const handleAdd = (e) =>{
+    e.preventDefault();
+      if(!isAuthenticated){
+        toast.error('UnAuthenticated!', {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Zoom,
+        });
+      }
+  }
+
   useEffect(() =>{
     if(JSON.parse(localStorage.getItem("user"))){
       getCurrentUser()
