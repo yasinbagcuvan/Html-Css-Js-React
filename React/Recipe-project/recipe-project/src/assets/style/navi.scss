@@ -3,7 +3,8 @@ nav{
     color:white;
     display: flex;
     justify-content: space-between;
-    padding: 15px 25px;
+    padding: 5px 25px;
+    width: 100%;
     font-size: large;
     h3{
         font-size: 20px;
@@ -35,6 +36,63 @@ nav{
             }
         }
     }
+    .kullanici{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap:5px;
+        .card-kullanici{
+            display: flex;
+            align-items: center;
+            img{
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+        }
+        button{
+            background-color: #2F3645;
+        }
+        span{
+            color: #2F3645;
+        }
+    }
+    .brand{
+        margin-top: 15px;
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        cursor: default;
+        img{
+            border-radius: 100%;
+            width: 90px;
+        }
+        h3{
+
+            width: 200px;
+            text-align: center;
+            color: #E76F51;
+        }
+    }
+    .liste{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        li{
+            transition: .5s;
+            cursor: pointer;
+            &:hover{
+                color:#E76F51;
+                text-decoration: underline;
+                transform: scale(1.2);  
+            }
+        }
+    }
 }
 .search{
     background-color: #E6B9A6;
@@ -49,6 +107,8 @@ nav{
         padding: 5px 10px;
         border-radius: 5px;
         border: 1px solid grey;
+        background-color: rgb(253, 227, 227);
+        color: black;
         
     }
     input:focus{

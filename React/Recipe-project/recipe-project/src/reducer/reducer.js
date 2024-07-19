@@ -8,7 +8,11 @@ description:"",
 image:"",
 titleErr:false,
 descriptionErr:false,
-search:""
+search:"",
+currentUser:"",
+isAuthenticated:false,
+user:"",
+password:"",
 }
 
 
@@ -97,6 +101,26 @@ export const reducer = (state,action)=>{
             return{
                 ...state,
                 selectedRecipe:action.payload
+            }
+        case"currentUser":
+            return{
+                ...state,
+                currentUser:action.payload
+            }
+        case"user":
+            return{
+                ...state,
+                user:action.payload
+            }
+        case"password":
+            return{
+                ...state,
+                password:action.payload
+            }
+        case"setAuthenticated":
+            return{
+                ...state,
+                isAuthenticated:action.payload
             }
     }
 }
