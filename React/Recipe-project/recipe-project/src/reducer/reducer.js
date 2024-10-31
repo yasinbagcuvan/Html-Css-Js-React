@@ -30,21 +30,20 @@ export const reducer = (state,action)=>{
                 fakeRecipes: updatedRecipes
 
             }
-        case "recipeEdit":
-            const editRecipes = [state.fakeRecipes.map(recipe =>{
-                if(recipe.id === state.selectedRecipe.id){
-                    return{...action.yeni}
-                }
-                else{
-                    return{...recipe}
-                }
-
-            })]
-            return{
-                ...state,
-                fakeRecipes: editRecipes,
-                selectedRecipe:""
-            }
+            case "recipeEdit":
+                const editRecipes = state.fakeRecipes.map((recipe) => {
+                  if (recipe.id === state.selectedRecipe.id) {
+                    return { ...recipe, ...action.yeni }; 
+                  } else {
+                    return recipe;
+                  }
+                });
+              
+                return {
+                  ...state,
+                  fakeRecipes: editRecipes, 
+                  selectedRecipe: "", 
+                };
         case "recipeDelete":
             const updatedRecipes1 = [...state.fakeRecipes.filter(item => item.id!== action.id)]
             return{

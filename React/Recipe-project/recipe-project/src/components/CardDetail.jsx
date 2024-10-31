@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom';
 import DataContext from '../Context/DataContext';
 import Navi from './Navi';
+import '../assets/style/cardDetail.scss'
 
 const CardDetail = () => {
     const {state}=useContext(DataContext);

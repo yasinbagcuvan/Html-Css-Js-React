@@ -1,13 +1,55 @@
 import React,{ useContext} from 'react'
 import '../assets/style/headMain.scss'
 import DataContext from '../Context/DataContext'
-
+import { toast, Zoom } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 const HeadMain = () => {
+  const navigate = useNavigate();
 
-  const{state,dispatch,handleSubmit  } = useContext(DataContext);
+  const{state,dispatch, recipeAdd } = useContext(DataContext);
 
   const{selectedRecipe,title,titleErr,description,descriptionErr,image} = state
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // const title1=setrecipeTitle(e.target.value);
+    // const description1=setrecipeDescription(e.target.value);
+    // const image1=setrecipeImage(e.target.value);
+    //setTitleErr(false)
+    dispatch({type:"setTitleErr"})
+    //setDescriptionErr(false)
+    dispatch({type:"setDescriptionErr"})
+    // setImageErr(false)
+    if (title.trim() && description.trim()) {
+      recipeAdd({
+        title: title,
+        description: description,
+        image: image,
+      });
+      // setrecipeTitle("");
+      // setrecipeDescription("");
+      // setrecipeImage("");
+      //case_8
+      dispatch({type:"resetForm"});
+      toast.success(selectedRecipe ? "Recipe updated successfully!" : "Recipe added successfully!");
+  
+        // Ana sayfaya yönlendirin
+        navigate('/');
+    }
+    else{
+      //case_6-7
+      !title.trim() && dispatch({type:"setTitleErr",payload:true})
+      !description.trim() && dispatch({type:"setDescriptionErr",payload:true})
+      // !image.trim() && setImageErr(true)
+    }   
+  }
+  
+  const buttonOnClick = () => {
+    setLoading(true);
+    // Simülasyon amaçlı bir süre sonra spinner'ı kaldırma
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000); // 3 saniye sonra spinner'ı kaldır
+  };
   return (
     <main>
       <div>
@@ -22,7 +64,7 @@ const HeadMain = () => {
       {descriptionErr && <p style={{ color: 'red' }}>Recipe Description is required!</p>} 
       <input value={image} onChange={e=>dispatch({type:"image",payload:e.target.value})} type="url" placeholder='Image(url)' />
       {/* {imageErr && <p style={{ color: 'red' }}>Recipe Image is required!</p>}  */}
-      <input type="submit"  value={selectedRecipe?"Edit":"Add"}  />
+      <input type="submit"  value={selectedRecipe?"Edit":"Add"}   />
       
     </form>
     </main>

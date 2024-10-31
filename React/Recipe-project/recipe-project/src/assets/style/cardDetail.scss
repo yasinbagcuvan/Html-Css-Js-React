@@ -1,0 +1,32 @@
+.detay {
+    display: flex; /* Flexbox kullanarak esnek bir düzen oluşturun */
+    flex-direction: column; /* Dikey hizalama */
+    align-items: center; /* İçerikleri ortala */
+    padding: 20px; /* İçerik için padding ekle */
+    background-color: #f8f9fa; /* Arka plan rengi */
+    border-radius: 10px; /* Köşe yuvarlama */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+    max-width: 600px; /* Maksimum genişlik ayarla */
+    margin: 20px auto; /* Ortalamak için otomatik kenar boşluğu */
+}
+
+.detay img {
+    width: 100%; /* Resmi kapsayıcıya tam yayılacak şekilde ayarla */
+    height: auto; /* Yüksekliği otomatik ayarla */
+    border-radius: 10px; /* Resmin köşelerini yuvarla */
+    margin-bottom: 15px; /* Resim ile başlık arasında boşluk */
+}
+
+.detay h3 {
+    font-size: 24px; /* Başlık boyutu */
+    color: #333; /* Başlık rengi */
+    margin-bottom: 10px; /* Başlık ile paragraf arasında boşluk */
+    text-align: center; /* Başlığı ortala */
+}
+
+.detay p {
+    font-size: 16px; /* Paragraf boyutu */
+    color: #555; /* Paragraf rengi */
+    line-height: 1.5; /* Satır yüksekliği */
+    text-align: center; /* Paragrafı ortala */
+}

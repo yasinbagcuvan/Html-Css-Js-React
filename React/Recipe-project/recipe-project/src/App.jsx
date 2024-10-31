@@ -17,14 +17,12 @@ function App() {
     <BrowserRouter>
     <ToastContainer/>
       <Routes>
-        <Route path='/' element={<HomePage/>}>
-            <Route path='add' element={<PrivateRoute element={<HeadMain/>}/>}/>
-        </Route>
-                   
-            <Route path='/login' element={<LoginPage/>} />
-            <Route path='/about' element={<About/>} />
-            <Route path='recipes' element={<CardList />}/>
-            <Route path='recipes/:recipeId' element={<CardDetail/>}/>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/add" element={<HeadMain />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/recipes" element={<CardList />} />
+      <Route path="/recipes/:recipeId" element={<CardDetail />} />
       </Routes>
     </BrowserRouter>
     </AuthProvider>

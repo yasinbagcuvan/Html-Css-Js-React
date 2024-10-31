@@ -35,13 +35,18 @@ const Navi = () => {
         transition: Zoom,
         });
       }
+      else{
+        dispatch({type:"resetForm"})
+        navigate('/add');
+      }
   }
 
   useEffect(() =>{
-    if(JSON.parse(localStorage.getItem("user"))){
-      getCurrentUser()
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      getCurrentUser(); 
     }
-  },[])
+}, [isAuthenticated]);
   
   return (
     <>

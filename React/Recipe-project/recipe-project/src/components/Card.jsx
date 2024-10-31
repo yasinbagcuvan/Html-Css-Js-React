@@ -7,9 +7,11 @@ import { MdEdit } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import AuthContext from '../Context/AuthContext';
 const Card = ({recipe}) => {
-  const {cardEdit,recipeDelete,state,dispatch} = useContext(DataContext,AuthContext);
-  const {search,isAuthenticated} = state
+  const {cardEdit,recipeDelete,state,dispatch} = useContext(DataContext);
+  const {search} = state
+  const {isAuthenticated} = useContext(AuthContext);
   return (
+    
     ((recipe.title.toLowerCase().startsWith(search.toLowerCase())) ||
     (recipe.description.toLowerCase().startsWith(search.toLowerCase()))) &&
     <div   className="card">
@@ -19,12 +21,13 @@ const Card = ({recipe}) => {
           <h4>{recipe.title}</h4>
           <p> {recipe.description}</p>
         </div>
+        
         {isAuthenticated &&
                 <div className='buttons'>
                 <a  onClick={()=>recipeDelete(recipe.id)} className='bn30'><MdDeleteForever size={20} /></a>
               
                 <Link  className='bn30' to={recipe.id}>DETAIL</Link>
-                <Link className='bn30' onClick={()=> cardEdit(recipe.id)}><MdEdit size={20} /></Link>
+                <Link className='bn30' onClick={()=> cardEdit(recipe.id)} to={'/add'}><MdEdit size={20} /></Link>
                 </div>
       }
 

@@ -8,6 +8,7 @@ export const DataProvider = ({children}) =>{
 
     const[state,dispatch] = useReducer(reducer,initialState)
     const{selectedRecipe,fakeRecipes,title,description,image} = state
+ 
 
   
     //const[imageErr,setImageErr]=useState(false);
@@ -15,7 +16,7 @@ export const DataProvider = ({children}) =>{
 
 
 const recipeAdd =  async (yeni) =>{
-    let url = "http://localhost:3005/recipes";
+    let url = "http://localhost:5500/recipes";
     if(!selectedRecipe){
       //setFakeRecipes(prev =>[...prev,yeni])
       //case_3
@@ -47,11 +48,11 @@ const recipeDelete = async(id) => {
   //setFakeRecipes(prev =>prev.filter(statedenGelen => statedenGelen.id !== id))
   //case_2
   dispatch({type:"recipeDelete",id})
-  const url =`http://localhost:3005/recipes/${id}`
+  const url =`http://localhost:5500/recipes/${id}`
   const response = await axios.patch(url, {isDeleted: true})
 }
 const recipesGet = async () =>{
-  const url = "http://localhost:3005/recipes"
+  const url = "http://localhost:5500/recipes"
   const response = await axios.get(url);
   const recipes = await response.data;
   //setFakeRecipes(recipes);
@@ -73,43 +74,7 @@ useEffect(()=>{
 
 
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  // const title1=setrecipeTitle(e.target.value);
-  // const description1=setrecipeDescription(e.target.value);
-  // const image1=setrecipeImage(e.target.value);
-  //setTitleErr(false)
-  dispatch({type:"setTitleErr"})
-  //setDescriptionErr(false)
-  dispatch({type:"setDescriptionErr"})
-  // setImageErr(false)
-  if (title.trim() && description.trim()) {
-    recipeAdd({
-      title: title,
-      description: description,
-      image: image,
-    });
-    // setrecipeTitle("");
-    // setrecipeDescription("");
-    // setrecipeImage("");
-    //case_8
-    dispatch({type:"resetForm"})
-  }
-  else{
-    //case_6-7
-    !title.trim() && dispatch({type:"setTitleErr",payload:true})
-    !description.trim() && dispatch({type:"setDescriptionErr",payload:true})
-    // !image.trim() && setImageErr(true)
-  }   
-}
 
-const buttonOnClick = () => {
-  setLoading(true);
-  // Simülasyon amaçlı bir süre sonra spinner'ı kaldırma
-  setTimeout(() => {
-    setLoading(false);
-  }, 3000); // 3 saniye sonra spinner'ı kaldır
-};
 
 // useEffect(() => {
 //   if(selectedRecipe){
@@ -120,7 +85,7 @@ const buttonOnClick = () => {
 // },[selectedRecipe])
 
     return <DataContext.Provider value={{
-        handleSubmit,
+        recipeAdd,
         recipeDelete, //Card
         cardEdit,
         state,dispatch

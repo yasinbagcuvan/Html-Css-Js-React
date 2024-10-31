@@ -1,13 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import 'rsuite/dist/rsuite.css';
 import '../assets/style/homePage.scss'
 import Navi from './Navi';
 import { Outlet } from 'react-router-dom'
 import Slider from './Slider';
+import AuthContext from '../Context/AuthContext';
 
 
 const HomePage = () => {
-   
+  const { getCurrentUser,dispatch } = useContext(AuthContext); // AuthContext'ten dispatch fonksiyonunu al
+
+  useEffect(() =>{
+    if(JSON.parse(localStorage.getItem("user"))){
+      getCurrentUser()
+    }
+  },[])
     return (
         <>
                 <Navi/>
