@@ -59,6 +59,7 @@ export const AuthProvider = ({children})=>{
     const logout = () =>{
         AuthService.logout();
         dispatch({type:"setAuthenticated",payload:false})
+        dispatch({type:"currentUser", payload:""})
     }
     return <AuthContext.Provider value={{logout,isAuthenticated,state,dispatch,getCurrentUser,login1}}>
         {children}
