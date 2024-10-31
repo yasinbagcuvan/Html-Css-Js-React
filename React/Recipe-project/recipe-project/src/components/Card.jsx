@@ -22,14 +22,16 @@ const Card = ({recipe}) => {
           <p> {recipe.description}</p>
         </div>
         
-        {isAuthenticated &&
-                <div className='buttons'>
-                <a  onClick={()=>recipeDelete(recipe.id)} className='bn30'><MdDeleteForever size={20} /></a>
-              
-                <Link  className='bn30' to={recipe.id}>DETAIL</Link>
-                <Link className='bn30' onClick={()=> cardEdit(recipe.id)} to={'/add'}><MdEdit size={20} /></Link>
-                </div>
-      }
+        {isAuthenticated ? (
+    <div className='buttons'>
+        <a onClick={() => recipeDelete(recipe.id)} className='bn30'><MdDeleteForever size={20} /></a>
+        <Link className='bn30' to={'/add'} onClick={() => cardEdit(recipe.id)}><MdEdit size={20} /></Link>
+    </div>
+) : (
+    <div className='buttons'>
+        <Link className='bn30' to={recipe.id}>DETAIL</Link>
+    </div>
+)}
 
     </div>
   )
